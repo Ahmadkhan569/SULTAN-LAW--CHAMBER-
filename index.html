@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sultan Law Chamber | Web Developer & Legal Services</title>
+    <meta name="description" content="Sultan Law Chamber — modern web development, District Court legal work, and advocate appointment assistance for District and High Court matters.">
+    <meta name="theme-color" content="#050505">
+
+    <style>
+        /* =========================================================
+           SULTAN LAW CHAMBER
+           Single-file semantic HTML portfolio
+           No <div> and no <span> used.
+           ========================================================= */
+
+        :root {
+            --black: #050505;
+            --black-soft: #0b0b0b;
+            --card: #101010;
+            --card-2: #151515;
+            --yellow: #ffc400;
+            --yellow-soft: #ffd84d;
+            --white: #f7f7f7;
+            --muted: #a7a7a7;
+            --border: rgba(255, 196, 0, .28);
+            --shadow: 0 0 35px rgba(255, 196, 0, .08);
+            --radius: 22px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 80% 10%, rgba(255, 196, 0, .09), transparent 28rem),
+                radial-gradient(circle at 10% 45%, rgba(255, 196, 0, .045), transparent 25rem),
+                var(--black);
+            color: var(--white);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .18;
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 45px 45px;
+            mask-image: linear-gradient(to bottom, black, transparent 85%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: min(1160px, 92%);
+            margin-inline: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 5, 5, .88);
+            border-bottom: 1px solid rgba(255, 196, 0, .12);
+            backdrop-filter: blur(16px);
+        }
+
+        nav {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        nav > a:first-child {
+            color: var(--yellow);
+            font-weight: 900;
+            letter-spacing: .4px;
+            font-size: 1.05rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav li a {
+            color: #ddd;
+            font-size: .93rem;
+            transition: .25s ease;
+        }
+
+        nav li a:hover,
+        nav li a:focus {
+            color: var(--yellow);
+        }
+
+        .nav-cta {
+            background: var(--yellow);
+            color: #090909 !important;
+            padding: 11px 17px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+        main section {
+            scroll-margin-top: 90px;
+        }
+
+        #home {
+            min-height: calc(100vh - 78px);
+            display: grid;
+            align-items: center;
+            padding: 80px 0;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.03fr .97fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .eyebrow {
+            color: var(--yellow);
+            font-size: .86rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+            margin-bottom: 17px;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 5.8rem);
+            line-height: .98;
+            letter-spacing: -3px;
+            max-width: 760px;
+        }
+
+        h1 strong {
+            color: var(--yellow);
+            display: block;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            margin: 25px 0;
+            font-size: 1.05rem;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 25px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+            padding: 0 20px;
+            border-radius: 12px;
+            font-weight: 800;
+            border: 1px solid var(--yellow);
+            transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+        }
+
+        .button.primary {
+            background: var(--yellow);
+            color: #080808;
+        }
+
+        .button.secondary {
+            color: var(--yellow);
+            background: transparent;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,196,0,.14);
+        }
+
+        .hero-card {
+            position: relative;
+            min-height: 410px;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            background: linear-gradient(145deg, #171717, #080808);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            animation: floatCard 5s ease-in-out infinite;
+        }
+
+        .hero-card::before {
+            content: "</>";
+            position: absolute;
+            right: 20px;
+            top: 13px;
+            color: rgba(255,196,0,.22);
+            font-size: 5rem;
+            font-weight: 900;
+        }
+
+        .monitor {
+            width: 88%;
+            border: 1px solid rgba(255,196,0,.38);
+            border-radius: 18px;
+            background: #080808;
+            box-shadow: 0 0 45px rgba(255,196,0,.10);
+            padding: 18px;
+        }
+
+        .monitor header {
+            position: static;
+            background: transparent;
+            border: 0;
+            padding-bottom: 12px;
+            backdrop-filter: none;
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dots i {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--yellow);
+        }
+
+        .screen {
+            border: 1px solid #252525;
+            min-height: 245px;
+            border-radius: 12px;
+            padding: 25px;
+            background:
+                linear-gradient(135deg, rgba(255,196,0,.07), transparent 48%),
+                #0c0c0c;
+        }
+
+        .screen h2 {
+            font-size: clamp(1.7rem, 3vw, 2.6rem);
+            line-height: 1.05;
+            margin-bottom: 15px;
+        }
+
+        .screen h2 strong {
+            color: var(--yellow);
+        }
+
+        .code-line {
+            height: 8px;
+            background: #292929;
+            border-radius: 20px;
+            margin: 10px 0;
+        }
+
+        .code-line.short {
+            width: 58%;
+        }
+
+        .code-line.yellow {
+            width: 72%;
+            background: rgba(255,196,0,.7);
+        }
+
+        section {
+            padding: 95px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 42px;
+        }
+
+        .section-heading p {
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+            font-size: .78rem;
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            line-height: 1.05;
+        }
+
+        .section-heading > h2 strong {
+            color: var(--yellow);
+        }
+
+        .about-grid,
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        article,
+        .contact-card,
+        .education-card,
+        .project-card {
+            background: linear-gradient(145deg, #141414, #0b0b0b);
+            border: 1px solid rgba(255,196,0,.18);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        article:hover,
+        .contact-card:hover,
+        .education-card:hover,
+        .project-card:hover {
+            border-color: rgba(255,196,0,.42);
+        }
+
+        article h3,
+        .contact-card h3,
+        .education-card h3,
+        .project-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.35rem;
+        }
+
+        article p,
+        .contact-card p,
+        .education-card p,
+        .project-card p {
+            color: var(--muted);
+        }
+
+        .stats {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+            margin-top: 20px;
+        }
+
+        .stats li {
+            border: 1px solid #252525;
+            border-radius: 13px;
+            padding: 15px;
+            background: #0c0c0c;
+        }
+
+        .stats strong {
+            color: var(--yellow);
+            display: block;
+            font-size: 1.25rem;
+        }
+
+        .skills-grid,
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: #101010;
+            border: 1px solid #242424;
+            padding: 23px;
+            border-radius: 17px;
+            transition: .3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--yellow);
+        }
+
+        .skill-card header {
+            position: static;
+            background: transparent;
+            border: 0;
+            padding: 0;
+            backdrop-filter: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+        }
+
+        .skill-card data {
+            color: var(--yellow);
+            font-weight: 800;
+        }
+
+        meter {
+            width: 100%;
+            height: 12px;
+            accent-color: var(--yellow);
+        }
+
+        .service-card {
+            min-height: 235px;
+            position: relative;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(255,196,0,.4);
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            color: var(--yellow);
+            font-size: 1.55rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .service-card a {
+            color: var(--yellow);
+            font-size: .88rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-top: 16px;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .education-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::after {
+            content: "EDUCATION";
+            position: absolute;
+            right: -10px;
+            top: 18px;
+            color: rgba(255,196,0,.06);
+            font-size: 3rem;
+            font-weight: 900;
+        }
+
+        .education-card mark {
+            background: rgba(255,196,0,.12);
+            color: var(--yellow);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .certificate-box {
+            min-height: 190px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            border: 1px dashed rgba(255,196,0,.35);
+            border-radius: 14px;
+            margin-top: 20px;
+            color: #777;
+            background: #090909;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .project-badge {
+            border: 1px solid rgba(255,196,0,.25);
+            border-radius: 12px;
+            padding: 13px 16px;
+            color: var(--yellow);
+            white-space: nowrap;
+        }
+
+        .contact-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .contact-list li {
+            padding: 13px 0;
+            border-bottom: 1px solid #242424;
+            color: var(--muted);
+        }
+
+        .contact-list strong {
+            color: var(--white);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        form {
+            display: grid;
+            gap: 13px;
+        }
+
+        label {
+            color: #ddd;
+            font-size: .88rem;
+            font-weight: 700;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            margin-top: 6px;
+            border: 1px solid #2b2b2b;
+            background: #090909;
+            color: white;
+            border-radius: 12px;
+            padding: 14px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--yellow);
+            box-shadow: 0 0 0 3px rgba(255,196,0,.08);
+        }
+
+        textarea {
+            min-height: 135px;
+            resize: vertical;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+            list-style: none;
+        }
+
+        .socials a {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #303030;
+            border-radius: 11px;
+            color: var(--yellow);
+            font-weight: 900;
+            transition: .25s;
+        }
+
+        .socials a:hover {
+            background: var(--yellow);
+            color: #080808;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,196,0,.14);
+            padding: 28px 0;
+            color: #777;
+            text-align: center;
+        }
+
+        footer strong {
+            color: var(--yellow);
+        }
+
+        #topButton {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--yellow);
+            border-radius: 50%;
+            background: #0b0b0b;
+            color: var(--yellow);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: .25s;
+            z-index: 900;
+        }
+
+        #topButton.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-9px); }
+        }
+
+        @media (max-width: 900px) {
+            nav ul {
+                gap: 14px;
+            }
+
+            .hero,
+            .about-grid,
+            .contact-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid,
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                gap: 35px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            header {
+                position: relative;
+            }
+
+            nav {
+                flex-direction: column;
+                padding: 18px 0;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav-cta {
+                display: none;
+            }
+
+            #home {
+                padding-top: 55px;
+            }
+
+            h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .hero-card {
+                min-height: 320px;
+            }
+
+            .monitor {
+                width: 100%;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .skills-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+
+            .actions .button {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         HEADER / NAVIGATION
+         ========================================================= -->
+    <header>
+        <nav class="container" aria-label="Main navigation">
+            <a href="#home" aria-label="Sultan Law Chamber home">SULTAN LAW CHAMBER</a>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a class="nav-cta" href="https://wa.me/923354381435?text=Assalam-o-Alaikum%2C%20I%20would%20like%20to%20contact%20Sultan%20Law%20Chamber." target="_blank" rel="noopener">WhatsApp</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- =====================================================
+             HOME
+             ===================================================== -->
+        <section id="home">
+            <article class="container hero">
+                <header>
+                    <p class="eyebrow">Web • Technology • Legal Support</p>
+
+                    <h1>
+                        We Build
+                        <strong>Digital Success.</strong>
+                    </h1>
+
+                    <p>
+                        Welcome to <strong>Sultan Law Chamber</strong> — a professional
+                        portfolio combining modern web development skills with legal
+                        District Court work and advocate appointment assistance.
+                    </p>
+
+                    <p><strong id="typingText">Web Developer</strong></p>
+
+                    <p class="actions">
+                        <a class="button primary" href="#contact">Get Started</a>
+                        <a class="button secondary" href="#services">Explore Services</a>
+                        <a class="button secondary" href="#portfolio">View Portfolio</a>
+                    </p>
+                </header>
+
+                <figure class="hero-card" aria-label="Digital portfolio illustration">
+                    <section class="monitor">
+                        <header>
+                            <p class="dots" aria-label="Decorative browser controls">
+                                <i></i><i></i><i></i>
+                            </p>
+                        </header>
+
+                        <section class="screen">
+                            <p class="eyebrow">Sultan Law Chamber</p>
+                            <h2>Modern <strong>Web.</strong><br>Professional <strong>Service.</strong></h2>
+                            <p class="code-line yellow"></p>
+                            <p class="code-line"></p>
+                            <p class="code-line short"></p>
+                            <p class="code-line"></p>
+                        </section>
+                    </section>
+                </figure>
+            </article>
+        </section>
+
+        <!-- =====================================================
+             ABOUT
+             ===================================================== -->
+        <section id="about">
+            <article class="container reveal">
+                <header class="section-heading">
+                    <p>01 — About</p>
+                    <h2>About <strong>Sultan Law Chamber</strong></h2>
+                </header>
+
+                <section class="about-grid">
+                    <article>
+                        <h3>Who We Are</h3>
+                        <p>
+                            Sultan Law Chamber is presented as a professional platform
+                            for web development, technology skills and legal support
+                            related to District Court work and advocate appointments.
+                            The website is designed with a clean, modern and premium
+                            black-and-yellow identity.
+                        </p>
+                    </article>
+
+                    <article>
+                        <h3>What We Focus On</h3>
+                        <ul class="stats">
+                            <li><strong>Web</strong> Modern Website Development</li>
+                            <li><strong>AI</strong> Artificial Intelligence</li>
+                            <li><strong>Legal</strong> District Court Work</li>
+                            <li><strong>MS Office</strong> Office Productivity</li>
+                        </ul>
+                    </article>
+                </section>
+            </article>
+        </section>
+
+        <!-- =====================================================
+             SKILLS
+             ===================================================== -->
+        <section id="skills">
+            <article class="container reveal">
+                <header class="section-heading">
+                    <p>02 — Skills</p>
+                    <h2>My <strong>Technical Skills</strong></h2>
+                </header>
+
+                <section class="skills-grid">
+                    <article class="skill-card">
+                        <header><h3>HTML</h3><data value="95">95%</data></header>
+                        <meter min="0" max="100" value="95">95%</meter>
+                    </article>
+
+                    <article class="skill-card">
+                        <header><h3>CSS</h3><data value="90">90%</data></header>
+                        <meter min="0" max="100" value="90">90%</meter>
+                    </article>
+
+                    <article class="skill-card">
+                        <header><h3>JavaScript</h3><data value="82">82%</data></header>
+                        <meter min="0" max="100" value="82">82%</meter>
+                    </article>
+
+                    <article class="skill-card">
+                        <header><h3>AI</h3><data value="80">80%</data></header>
+                        <meter min="0" max="100" value="80">80%</meter>
+                    </article>
+
+                    <article class="skill-card">
+                        <header><h3>MS Office</h3><data value="88">88%</data></header>
+                        <meter min="0" max="100" value="88">88%</meter>
+                    </article>
+
+                    <article class="skill-card">
+                        <header><h3>Legal / Court Work</h3><data value="85">85%</data></header>
+                        <meter min="0" max="100" value="85">85%</meter>
+                    </article>
+                </section>
+            </article>
+        </section>
+
+        <!-- =====================================================
+             SERVICES
+             ===================================================== -->
+        <section id="services">
+            <article class="container reveal">
+                <header class="section-heading">
+                    <p>03 — Services</p>
+                    <h2>What We <strong>Can Do</strong></h2>
+                </header>
+
+                <section class="services-grid">
+
+                    <article class="service-card">
+                        <header class="service-icon" aria-hidden="true">⌘</header>
+                        <h3>Web Development</h3>
+                        <p>Modern, responsive and user-friendly websites built with HTML, CSS and JavaScript.</p>
+                        <a href="#contact">Request Service →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <header class="service-icon" aria-hidden="true">⚖</header>
+                        <h3>District Court Work</h3>
+                        <p>Legal District Court work and related professional support according to the required matter.</p>
+                        <a href="#contact">Discuss Matter →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <header class="service-icon" aria-hidden="true">§</header>
+                        <h3>Advocate Appointment</h3>
+                        <p>Assistance in arranging advocate appointments for District Court and High Court matters.</p>
+                        <a href="#contact">Request Appointment →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <header class="service-icon" aria-hidden="true">AI</header>
+                        <h3>AI & Technology</h3>
+                        <p>Exploring practical AI and digital technology for productivity, learning and modern work.</p>
+                        <a href="#contact">Learn More →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <header class="service-icon" aria-hidden="true">▣</header>
+                        <h3>MS Office</h3>
+                        <p>Professional document, office and productivity work using Microsoft Office tools.</p>
+                        <a href="#contact">Request Service →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <header class="service-icon" aria-hidden="true">+</header>
+                        <h3>Future Projects</h3>
+                        <p>A growing portfolio for upcoming web, technology and professional projects.</p>
+                        <a href="#portfolio">See Portfolio →</a>
+                    </article>
+
+                </section>
+            </article>
+        </section>
+
+        <!-- =====================================================
+             EDUCATION
+             ===================================================== -->
+        <section id="education">
+            <article class="container reveal">
+                <header class="section-heading">
+                    <p>04 — Education</p>
+                    <h2>Education & <strong>Certificates</strong></h2>
+                </header>
+
+                <section class="education-grid">
+
+                    <article class="education-card">
+                        <p class="eyebrow">Matriculation</p>
+                        <h3>GHSS Togh Bala</h3>
+                        <p><mark>Medical Group</mark></p>
+                        <p>Matriculation completed with the Medical group.</p>
+
+                        <!-- Replace the src below after uploading your certificate image. -->
+                        <figure class="certificate-box">
+                            <figcaption>
+                                <strong>Matric Certificate / DMC</strong><br>
+                                Add your certificate or DMC image here.
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                    <article class="education-card">
+                        <p class="eyebrow">FSc Part 1</p>
+                        <h3>GHSS Togh Bala</h3>
+                        <p><mark>Computer Science</mark></p>
+                        <p>FSc Part 1 — Computer Science. Part 2 is continuing.</p>
+
+                        <!-- Replace the src below after uploading your certificate/DMC image. -->
+                        <figure class="certificate-box">
+                            <figcaption>
+                                <strong>FSc Certificate / DMC</strong><br>
+                                Add your certificate or DMC image here.
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                </section>
+            </article>
+        </section>
+
+        <!-- =====================================================
+             PORTFOLIO
+             ===================================================== -->
+        <section id="portfolio">
+            <article class="container reveal">
+                <header class="section-heading">
+                    <p>05 — Portfolio</p>
+                    <h2>Current & <strong>Future Projects</strong></h2>
+                </header>
+
+                <section class="portfolio-grid">
+                    <article class="project-card">
+                        <section>
+                            <h3>Portfolio Website</h3>
+                            <p>
+                                This website itself is the first featured project:
+                                a semantic HTML, responsive, black-and-yellow portfolio
+                                with CSS animation and JavaScript interaction.
+                            </p>
+                        </section>
+                        <p class="project-badge">HTML • CSS • JS</p>
+                    </article>
+
+                    <article class="project-card">
+                        <section>
+                            <h3>Future Projects</h3>
+                            <p>
+                                More web development, AI and technology projects will
+                                be added here as they are completed.
+                            </p>
+                        </section>
+                        <p class="project-badge">Coming Soon</p>
+                    </article>
+                </section>
+            </article>
+        </section>
+
+        <!-- =====================================================
+             CONTACT
+             ===================================================== -->
+        <section id="contact">
+            <article class="container reveal">
+                <header class="section-heading">
+                    <p>06 — Contact</p>
+                    <h2>Let's <strong>Work Together</strong></h2>
+                </header>
+
+                <section class="contact-grid">
+
+                    <article class="contact-card">
+                        <h3>Contact Information</h3>
+                        <p>For web development, legal District Court work or advocate appointment inquiries.</p>
+
+                        <ul class="contact-list">
+                            <li>
+                                <strong>WhatsApp / Phone</strong>
+                                <a href="tel:+923354381435">0335-4381435</a>
+                            </li>
+                            <li>
+                                <strong>Email</strong>
+                                <a href="mailto:ak7698601@gmail.com">ak7698601@gmail.com</a>
+                            </li>
+                            <li>
+                                <strong>Location</strong>
+                                Buraka, Kohat, KPK, Pakistan
+                            </li>
+                        </ul>
+
+                        <p class="actions">
+                            <a class="button primary" href="https://wa.me/923354381435?text=Assalam-o-Alaikum%2C%20I%20would%20like%20to%20contact%20Sultan%20Law%20Chamber." target="_blank" rel="noopener">
+                                💬 Chat on WhatsApp
+                            </a>
+                        </p>
+
+                        <!--
+                            SOCIAL MEDIA LINKS:
+                            Add the real URLs later.
+
+                            Facebook  → replace # with your URL
+                            TikTok    → replace # with your URL
+                            Instagram → replace # with your URL
+                            YouTube   → replace # with your URL
+                        -->
+                        <ul class="socials" aria-label="Social media">
+                            <li><a href="#" aria-label="Facebook">f</a></li>
+                            <li><a href="#" aria-label="TikTok">♪</a></li>
+                            <li><a href="#" aria-label="Instagram">◎</a></li>
+                            <li><a href="#" aria-label="YouTube">▶</a></li>
+                        </ul>
+                    </article>
+
+                    <article class="contact-card">
+                        <h3>Send Us a Message</h3>
+                        <p>Your message will be prepared for WhatsApp.</p>
+
+                        <form id="contactForm">
+                            <label for="name">
+                                Your Name
+                                <input id="name" name="name" type="text" placeholder="Enter your name" required>
+                            </label>
+
+                            <label for="email">
+                                Your Email
+                                <input id="email" name="email" type="email" placeholder="Enter your email" required>
+                            </label>
+
+                            <label for="message">
+                                Your Message
+                                <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+                            </label>
+
+                            <button class="button primary" type="submit">💬 Send via WhatsApp</button>
+                        </form>
+                    </article>
+
+                </section>
+            </article>
+        </section>
+
+    </main>
+
+    <footer>
+        <article class="container">
+            <p>© <time id="year"></time> <strong>Sultan Law Chamber</strong>. All rights reserved.</p>
+            <p>Built with Semantic HTML • CSS • JavaScript</p>
+        </article>
+    </footer>
+
+    <button id="topButton" type="button" aria-label="Back to top">↑</button>
+
+    <script>
+        /* =========================================================
+           JAVASCRIPT
+           ========================================================= */
+
+        // Dynamic year
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Typing animation
+        const typingElement = document.getElementById("typingText");
+        const words = [
+            "Web Developer",
+            "AI Enthusiast",
+            "Programmer",
+            "MS Office User",
+            "Legal Work Support"
+        ];
+
+        let wordIndex = 0;
+        let characterIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+
+            if (!deleting) {
+                characterIndex++;
+                typingElement.textContent = currentWord.slice(0, characterIndex);
+
+                if (characterIndex === currentWord.length) {
+                    deleting = true;
+                    setTimeout(typeEffect, 1300);
+                    return;
+                }
+            } else {
+                characterIndex--;
+                typingElement.textContent = currentWord.slice(0, characterIndex);
+
+                if (characterIndex === 0) {
+                    deleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            }
+
+            setTimeout(typeEffect, deleting ? 55 : 95);
+        }
+
+        typeEffect();
+
+        // Reveal-on-scroll animation
+        const revealItems = document.querySelectorAll(".reveal");
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.12 }
+        );
+
+        revealItems.forEach(item => observer.observe(item));
+
+        // Back-to-top button
+        const topButton = document.getElementById("topButton");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 500) {
+                topButton.classList.add("show");
+            } else {
+                topButton.classList.remove("show");
+            }
+        });
+
+        topButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // WhatsApp contact form
+        document.getElementById("contactForm").addEventListener("submit", event => {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            const whatsappText =
+                "Assalam-o-Alaikum, Sultan Law Chamber.%0A%0A" +
+                "Name: " + encodeURIComponent(name) + "%0A" +
+                "Email: " + encodeURIComponent(email) + "%0A" +
+                "Message: " + encodeURIComponent(message);
+
+            window.open(
+                "https://wa.me/923354381435?text=" + whatsappText,
+                "_blank"
+            );
+        });
+    </script>
+
+</body>
+</html>
